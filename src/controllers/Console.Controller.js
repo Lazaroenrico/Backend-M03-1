@@ -11,23 +11,27 @@ const findByIdConsoleController = (req, res) => {
   res.send(chosenConsole);
 };
 
-const createConsoleController = (req,res)=>{
-  const consoli = req.body
-  const newConsoler = consoleService.createConsoleService(consoli)
-  res.send(newConsoler)
-}
+const createConsoleController = (req, res) => {
+  const consoli = req.body;
+  const newConsoler = consoleService.createConsoleService(consoli);
+  res.send(newConsoler);
+};
 
-const updateConsoleController = (req,res)=>{
+const updateConsoleController = (req, res) => {
   const idParam = Number(req.params.id);
   const consoleEdit = req.body;
-  const updatedConsole = consoleService.updateConsoleService(idParam, consoleEdit);
+  const updatedConsole = consoleService.updateConsoleService(
+    idParam,
+    consoleEdit
+  );
   res.send(updatedConsole);
-}
+};
 
-const deleteConsoleController = (req,res)=>{
-
-}
-
+const deleteConsoleController = (req, res) => {
+  const idParam = req.params.id;
+  consoleService.deleteConsoleService(idParam);
+  res.send({ message: 'Console deletado com sucesso!' });
+};
 
 module.exports = {
   findAllConsoleController,

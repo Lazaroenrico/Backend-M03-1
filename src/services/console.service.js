@@ -40,7 +40,30 @@ const findByIdConsoleService = (idParam) => {
   return consoles
 }
 
+const createConsoleService = (newConsoler) => {
+  const newId =  consoler.length + 1;
+  newConsoler.id = newId;
+  consoler.push(newConsoler);
+  return newConsoler;
+}
+
+const updateConsoleService = (id,consoleEdited) => {
+  consoleEdited['id'] = id;
+  const consoleIndex = consoler.findIndex((consoler) => consoler.id == id);/* passivo a erro */
+  consoler[consoleIndex] = consoleEdited;
+  return consoleEdited;
+}
+
+const deleteConsoleService = (id) => {
+  const consoleIndex = consoler.findIndex((consoler) => consoler.id == id);/* passivo a erro */ 
+  return consoler.splice(consoleIndex, 1);
+}
+  
+
 module.exports = {
   findAllConsoleService,
   findByIdConsoleService,
+  createConsoleService,
+  updateConsoleService,
+  deleteConsoleService,
 };
